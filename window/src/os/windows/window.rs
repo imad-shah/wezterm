@@ -1200,7 +1200,7 @@ unsafe fn auto_hide_taskbar_edges(monitor: HMONITOR) -> AutoHideTaskbarEdges {
         data.uEdge = edge;
         data.rc = monitor_rect;
 
-        if !SHAppBarMessage(ABM_GETAUTOHIDEBAREX, &mut data).is_null() {
+        if SHAppBarMessage(ABM_GETAUTOHIDEBAREX, &mut data) != 0 {
             edges.insert(edge);
         }
     }
